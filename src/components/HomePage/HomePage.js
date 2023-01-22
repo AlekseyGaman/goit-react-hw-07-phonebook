@@ -1,18 +1,23 @@
 import ContactList from 'components/ContactList';
-import { useSelector } from 'react-redux';
-
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import ContactsForm from '../ContactsForm/ContactsForm';
-import Filter from '../Filter/Filter';
-import { getContacts } from '../../redux/contactsSlice';
+import { fetchContacts } from '../../redux/Operations';
+// import Filter from '../Filter/Filter';
 
 const HomePage = () => {
-  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+  const { items } = useSelector(state => state.contacts);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <>
       <ContactsForm />
-      <Filter />
-      {contacts.length > 0 ? (
+      {/* <Filter /> */}
+      {items.length > 0 ? (
         <ContactList
         // contacts={getFilterContsacts()}
         />

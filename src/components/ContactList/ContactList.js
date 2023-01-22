@@ -1,35 +1,27 @@
 // import PropTypes from 'prop-types';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
+import { deleteContact } from '../../redux/Operations';
 import { ContactListUl, ContactLi } from './ContactList.styled';
-import { getContacts, getFilter } from '../../redux/contactsSlice';
 
 export default function ContactList() {
-  const contacts = useSelector(getContacts);
-  const filterValue = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  const deleteSelectedContact = contactID => dispatch(deleteContact(contactID));
+  const contacts = useSelector(state => state.contacts.items);
+  const filterValue = useSelector(state => state.filter);
 
-  const contactsFilter = () => {
-    const filterNormalize = filterValue.toLowerCase();
-
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filterNormalize)
-    );
-  };
-
-  const filtredContacts = contactsFilter();
+  const contactsFilter = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filterValue)
+  );
 
   return (
     <ContactListUl>
-      {filtredContacts.map(({ id, name, number }) => {
+      {contacts.map(({ id, name, number }) => {
         return (
           <ContactLi key={id}>
             <p>{name}:</p>
             <span>{number}</span>
-            <button type="button" onClick={() => deleteSelectedContact(id)}>
+            <button type="button" onClick={() => dispatch(deleteContact(id))}>
               Remove
             </button>
           </ContactLi>

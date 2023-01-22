@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
-import { getContacts } from '../../redux/contactsSlice';
-import { addContact } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/Operations';
 import {
   ContactsSpan,
   Form,
@@ -16,7 +15,7 @@ const ContactsForm = () => {
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(state => state.contacts.items);
 
   const NameChange = event => {
     setName(event.currentTarget.value);
