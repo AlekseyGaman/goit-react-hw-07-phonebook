@@ -1,4 +1,4 @@
-import { createSlice, createReducer, combineReducers } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 // import * as contactsActions from './Actions';
 import { fetchContacts, addContact, deleteContact } from './Operations';
 // import { persistReducer } from 'redux-persist';
