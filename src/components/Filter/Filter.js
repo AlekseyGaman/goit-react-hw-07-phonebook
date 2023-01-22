@@ -12,7 +12,7 @@ const Filter = () => {
   return (
     <FilterWrapper>
       <FilterLabel>
-        Find contacts by name
+        Find contacts by name !
         <FilterInput
           type="search"
           value={contactsFilter}
