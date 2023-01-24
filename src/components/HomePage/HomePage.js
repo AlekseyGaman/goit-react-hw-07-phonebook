@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ContactsForm from '../ContactsForm/ContactsForm';
 import { fetchContacts } from '../../redux/Operations';
-// import Filter from '../Filter/Filter';
+import Filter from '../Filter/Filter';
+// import { getFilterContsacts } from '../../redux/filterSlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const HomePage = () => {
   return (
     <>
       <ContactsForm />
-      {/* <Filter /> */}
+      <Filter />
       {items.length > 0 ? (
         <ContactList
         // contacts={getFilterContsacts()}

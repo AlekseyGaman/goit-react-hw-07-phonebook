@@ -1,26 +1,25 @@
-// import PropTypes from 'prop-types';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { FilterLabel, FilterInput, FilterWrapper } from './Filter.syled';
-// import { getFilterContsacts, getFilter } from '../../redux/contactsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { FilterLabel, FilterInput, FilterWrapper } from './Filter.syled';
+import { getFilterContsacts } from '../../redux/filterSlice';
 
-// const Filter = () => {
-//   const dispatch = useDispatch();
-//   const contactsFilter = useSelector(getFilter);
-//   const changeFilter = event =>
-//     dispatch(getFilterContsacts(event.currentTarget.value));
+const Filter = () => {
+  const dispatch = useDispatch();
+  const contactsFilter = useSelector(state => state.filter);
 
-//   return (
-//     <FilterWrapper>
-//       <FilterLabel>
-//         Find contacts by name
-//         <FilterInput
-//           type="search"
-//           value={contactsFilter}
-//           onChange={changeFilter}
-//         ></FilterInput>
-//       </FilterLabel>
-//     </FilterWrapper>
-//   );
-// };
+  return (
+    <FilterWrapper>
+      <FilterLabel>
+        Find contacts by name
+        <FilterInput
+          type="search"
+          value={contactsFilter}
+          onChange={event =>
+            dispatch(getFilterContsacts(event.currentTarget.value))
+          }
+        ></FilterInput>
+      </FilterLabel>
+    </FilterWrapper>
+  );
+};
 
-// export default Filter;
+export default Filter;

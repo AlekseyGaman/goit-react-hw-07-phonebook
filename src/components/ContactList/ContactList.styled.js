@@ -4,21 +4,22 @@ export const ContactListUl = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-bottom: 30px;
 `;
 
 export const ContactLi = styled.li`
   display: flex;
-  width: 380px;
+  max-width: 500px;
   gap: 20px;
 
   & p {
     font-size: 20px;
     display: list-item;
-    width: 150px;
+    width: 200px;
   }
   & span {
     font-size: 20px;
-    width: 110px;
+    width: 140px;
   }
   & button {
     padding: 7px;
